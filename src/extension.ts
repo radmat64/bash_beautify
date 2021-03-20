@@ -11,7 +11,13 @@ export function activate(context: vscode.ExtensionContext) {
         registerDocumentFormattingEditProvider('shellscript',
         new ShellFormatter());
 
-    context.subscriptions.push(disposable);
+        context.subscriptions.push(disposable);
+        context.subscriptions.push(vscode.languages.
+            registerDocumentFormattingEditProvider('awk',
+            new ShellFormatter()));
+        context.subscriptions.push(vscode.languages.
+            registerDocumentFormattingEditProvider('roicfg',
+            new ShellFormatter()));
 }
 
 // this method is called when your extension is deactivated
