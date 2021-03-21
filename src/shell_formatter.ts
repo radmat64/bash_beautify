@@ -1,7 +1,7 @@
 import {
     DocumentFormattingEditProvider,
     TextDocument, CancellationToken,
-    ProviderResult, TextEdit, TextEditor, Range,
+    ProviderResult, TextEdit, Range,
     Position, window, workspace,
     FormattingOptions
 } from 'vscode';
@@ -9,12 +9,11 @@ import {
 import { FormatScript } from './format_script';
 
 export class ShellFormatter implements DocumentFormattingEditProvider {
-    private file_validator: (path: string) => boolean;
     private document: TextDocument;
     private script: FormatScript = new FormatScript();
 
     provideDocumentFormattingEdits(document: TextDocument,
-        options: FormattingOptions, token: CancellationToken): ProviderResult<TextEdit[]> {
+        _options: FormattingOptions, _token: CancellationToken): any | ProviderResult<void | TextEdit[]> {
 
         // Retrieve all text in document
         let text = document.getText();

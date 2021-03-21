@@ -1,7 +1,5 @@
 import { ChildProcess, spawn } from 'child-process-promise';
-import { notStrictEqual } from 'assert';
 import { join } from 'path';
-import { EOL } from 'os';
 export class FormatScript {
     private formatter: ChildProcess;
     data: string;
@@ -15,8 +13,8 @@ export class FormatScript {
 
         // Setup the python process
         this.formatter = promise.childProcess;
-        this.formatter.stdout.on('data', (data) => this.data = data.toString());
-        this.formatter.stderr.on('data', (data) => this.err = data.toString());
+        this.formatter.stdout.on('data', (data: { toString: () => string; }) => this.data = data.toString());
+        this.formatter.stderr.on('data', (data: { toString: () => string; }) => this.err = data.toString());
 
         // Send the text for formatting
         this.formatter.stdin.write(fileContent);
