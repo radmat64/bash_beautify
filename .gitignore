@@ -68,3 +68,6 @@ typings/
 
 # pycharm
 .idea
+
+# vsce package
+*.vsix
